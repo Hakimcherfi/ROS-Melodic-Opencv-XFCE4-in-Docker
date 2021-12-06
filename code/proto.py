@@ -13,11 +13,24 @@ assert sys.version_info.major == 2 and sys.version_info.minor == 7
 #in :  image_filtered = image filtree [NOIR et BLANC]
 def func_preprocess(image_raw):
     image_filtered = cv2.cvtColor(image_raw, cv2.COLOR_BGR2GRAY)
-    image_filtered = cv2.equalizeHist(image_filtered)
     image_filtered = cv2.medianBlur(image_filtered, 25)
-    kernel0 = np.ones((5, 5), np.uint8)
-    image_filtered = cv2.dilate(image_filtered, kernel0)
-    image_filtered = cv2.erode(image_filtered, kernel0)
+    cv2.imshow('test',image_filtered)
+
+    #image_filtered = cv2.equalizeHist(image_filtered)
+    #ret, image_filtered = cv2.threshold(image_filtered, 0, 255, cv2.THRESH_OTSU + cv2.THRESH_BINARY)
+    image_filtered = cv2.adaptiveThreshold(image_filtered,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,21,8)
+    image_filtered = cv2.medianBlur(image_filtered,5)
+
+    image_filtered = cv2.medianBlur(image_filtered,5)
+    image_filtered = cv2.medianBlur(image_filtered,5)
+    image_filtered = cv2.medianBlur(image_filtered,5)
+
+    #kernel0 = np.ones((2, 2), np.uint8)
+    #image_filtered = cv2.dilate(image_filtered, kernel0)
+    #kernel0 = np.ones((3, 3), np.uint8)
+    #image_filtered = cv2.erode(image_filtered, kernel0)
+
+
     return image_filtered
 
 #in :  image_filtered = image filtree [NOIR et BLANC]
