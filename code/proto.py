@@ -1,6 +1,6 @@
 import sys
 import os
-import cv2 as cv
+import cv2
 
 #Checking that this script is running on python2.7
 print("Using python"+str(sys.version_info.major)+"."+str(sys.version_info.minor)) 
@@ -26,7 +26,7 @@ def func_edge_detection(image_filtered):
 def func_edge_analysis(image_edges,expected_hole_diameter):
     defect_type = "square"
     is_defective = True
-    return is_defective,hole_type
+    return is_defective,defect_type
 
 
 
