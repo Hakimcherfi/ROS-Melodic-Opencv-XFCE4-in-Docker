@@ -1,6 +1,6 @@
 import sys
 import os
-import cv2 as cv
+import cv2
 
 #Checking that this script is running on python2.7
 print("Using python"+str(sys.version_info.major)+"."+str(sys.version_info.minor)) 
