@@ -47,17 +47,17 @@ if __name__ == "__main__":
         cv2.imshow('image',image_raw)
         
         #1 PREPROCESSING
-        image_filtered=func_preprocess(image_raw):
+        image_filtered=func_preprocess(image_raw)
         #2 EDGE FILTERING 
         #   Je vais rapidement fournir une V0 de la fonction de filtrage 
         #   en attendant tu peux essayer sur des images non filtrees  
-        image_edges=func_edge_detection(image_filtered):
+        image_edges=func_edge_detection(image_filtered)
 
 
         #3 EDGE ANALYSIS 
         #   En attendant que guilhem vous sorte une image des contours
         #   vous devrez bosser sur une image paint  
-        is_defective,hole_type  = func_edge_analysis(image_edges,8):
+        is_defective,hole_type  = func_edge_analysis(image_edges,8)
 
 
         print("(press a key to process next image)")
