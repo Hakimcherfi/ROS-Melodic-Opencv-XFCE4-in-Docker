@@ -12,6 +12,8 @@ RUN chmod +x /installvsc.sh && /installvsc.sh
 
 ADD entrypoint.sh /
 
+ADD https://api.github.com/repos/Hakimcherfi/Qualite-PGE/git/refs/heads/main version.json
+
 RUN chmod +x /entrypoint.sh && mkdir -p ~/Desktop/pge ~/Desktop/volume_map && git clone https://github.com/hakimcherfi/Qualite-PGE.git/ ~/Desktop/pge
 
 CMD /entrypoint.sh
