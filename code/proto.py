@@ -32,7 +32,7 @@ def func_edge_analysis(image_edges,expected_hole_diameter):
 
 if __name__ == "__main__":
     curent_dir = os.getcwd()
-    image_dir = curentdir+"/images"
+    image_dir = curent_dir+"/images"
     print(image_dir)
     image_list = []
     for file in os.listdir(image_dir):
