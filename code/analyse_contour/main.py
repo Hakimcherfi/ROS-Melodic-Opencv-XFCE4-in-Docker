@@ -2,24 +2,30 @@
 import numpy as np
 import cv2
 
-image = cv2.imread('perfect_circle.jpg')
-output = image.copy()
-gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
-circles = cv2.HoughCircles(gray,cv2.HOUGH_GRADIENT,1.2,100)
-if circles is not None:
-    print("trouve")
-	# convert the (x, y) coordinates and radius of the circles to integers
-    circles = np.round(circles[0, :]).astype("int")
-	# loop over the (x, y) coordinates and radius of the circles
-    for (x, y, r) in circles:
-		# draw the circle in the output image, then draw a rectangle
-		# corresponding to the center of the circle
-		cv2.circle(output, (x, y), r, (0, 255, 0), 4)
-		cv2.rectangle(output, (x - 5, y - 5), (x + 5, y + 5), (0, 128, 255), -1)
-	# show the output image
-    cv2.imshow(output, np.hstack([image, output]))
-    cv2.waitKey(0)
-#window_name = 'image'
-#cv2.imshow(window_name,image)
-#cv2.waitKey(0)
-#cv2.destroyAllWindows()
+image = cv2.imread('random_circle.jpg')
+cv2.imshow('original',image)
+cv2.waitKey(0)
+
+def fonction(image):
+	output = image.copy() #pour affichage
+	gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY) #conversion greyscale
+	#cv2.imshow('figure',cv2.Canny(gray,10,100))
+	#cv2.waitKey(0)
+	method = cv2.HOUGH_GRADIENT
+	dp = 3 #0.5 : step 2 fois plus grand que resolution image. 2 : step 2 fois plus petit que resolution image
+	minDist = 100000 #distance minimale entre cercles detectes (detecter cercle unique si assez grand, voir aucun si trop grand)
+	param1 = 1#	seuil superieur donne a canny (seuil inf= moitie seuil sup)
+	param2 = 1# seuil inferieur utilise pour mecanisme de vote (si bas, des faux cercles sont detectes)
+	minRadius = 0#seuil inf des cercles recherches
+	maxRadius = 0#seuil sup des cercles recherches (si <=0 utilise +gde dimension de l'image, si <0, retourne centres sans donner de rayons)
+	circles = cv2.HoughCircles(gray,method,dp,minDist,param2 = param2) #liste de tuples contenant coordonnees cercles et votes
+	if circles is not None:
+		circles = np.round(circles[0, :]).astype("int") #conversion en entiers
+		#boucle sur cercle trouves
+		for (x, y, r) in circles:
+			cv2.circle(output,(x,y),r,(0,0,255)) #dessine cercle
+		cv2.imshow('out',output)
+		cv2.waitKey(0)
+	cv2.destroyAllWindows()
+
+cercles = fonction(image)
