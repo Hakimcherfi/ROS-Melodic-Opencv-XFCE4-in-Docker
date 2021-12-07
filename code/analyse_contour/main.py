@@ -1,10 +1,7 @@
 #!/usr/bin/python
 import numpy as np
 import cv2
-
-image = cv2.imread('random_circle.jpg')
-cv2.imshow('original',image)
-cv2.waitKey(0)
+assert cv2.__version__=="4.2.0"
 
 def fonction(image):
 	output = image.copy() #pour affichage
@@ -31,13 +28,16 @@ def fonction(image):
 		circles = np.round(circles[0, :]).astype("int") #conversion en entiers
 		#boucle sur cercle trouves
 		for (x, y, r) in circles:
-			cv2.circle(output,(x,y),r,(0,0,255),4) #dessine cercle
+			cv2.circle(output,(x,y),r,(0,0,255),1) #dessine cercle
 		cv2.imshow('out',output)
 		cv2.waitKey(0)
 	else:
 		print("no circle found.")
 	
-	cv2.destroyAllWindows()
+	
 
-
+image = cv2.imread('closed_form.jpg')
+cv2.imshow('original',image)
+cv2.waitKey(0)
 cercles = fonction(image)
+cv2.destroyAllWindows()
