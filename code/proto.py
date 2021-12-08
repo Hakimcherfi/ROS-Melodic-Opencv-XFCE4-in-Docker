@@ -3,11 +3,6 @@ import os
 import cv2
 import numpy as np
 import time
-from skimage import data, img_as_float
-from skimage.segmentation import (morphological_chan_vese,
-                                  morphological_geodesic_active_contour,
-                                  inverse_gaussian_gradient,
-                                  checkerboard_level_set)
 
 #Checking that this script is running on python2.7
 print("Using python"+str(sys.version_info.major)+"."+str(sys.version_info.minor)) 
@@ -23,7 +18,14 @@ def func_preprocess(image_raw):
     cv2.imshow('test',image_filtered)
     image_filtered = cv2.adaptiveThreshold(image_filtered,255,cv2.ADAPTIVE_THRESH_MEAN_C,cv2.THRESH_BINARY,41,10)
 
-    return image_filtered 
+    des = cv2.bitwise_not(image_filtered)
+    contour,hier = cv2.findContours(des,cv2.RETR_CCOMP,cv2.CHAIN_APPROX_SIMPLE)
+
+    for cnt in contour:
+        cv2.drawContours(des,[cnt],0,255,-1)
+
+    image_filtered = cv2.bitwise_not(des)
+    return cv2.bitwise_not(image_filtered) 
 
 #in :  image_filtered = image filtree [NOIR et BLANC]
 #out : image_edges    = image du coutour du trou [NOIR et BLANC]
@@ -73,6 +75,7 @@ if __name__ == "__main__":
         image_raw = cv2.imread(image_path)
         cv2.imshow('image_raw',image_raw)
         start_time = time.time()
+        
         #1 PREPROCESSING
         image_filtered=func_preprocess(image_raw)
         cv2.imshow('image_filtered',image_filtered)
@@ -80,7 +83,7 @@ if __name__ == "__main__":
         #2 EDGE FILTERING 
         #   Je vais rapidement fournir une V0 de la fonction de filtrage 
         #   en attendant tu peux essayer sur des images non filtrees  
-        image_edges=func_edge_detection(image_filtered)
+        #image_edges=func_edge_detection(image_filtered)
 
 
         #3 EDGE ANALYSIS 
