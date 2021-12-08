@@ -3,6 +3,7 @@ import os
 import cv2
 import numpy as np
 import time
+from analyseContour import *
 
 #Checking that this script is running on python2.7
 print("Using python"+str(sys.version_info.major)+"."+str(sys.version_info.minor)) 
@@ -52,9 +53,7 @@ def func_edge_detection(image_filtered):
 #out : is_defective              = indique si le trou est bon ou pas [BOOL] 
 #      defect_type               = precise si possible de type de defaut [STR] 
 def func_edge_analysis(image_edges,expected_hole_diameter):
-    defect_type = "square"
-    is_defective = True
-    return is_defective,defect_type
+    return analyseContour.caracterization(cv2.cvtColor(image_edges,cv2.COLOR_GRAY2RGB),expected_hole_diameter)
 
 
 
@@ -73,6 +72,7 @@ if __name__ == "__main__":
         #0 LOADING OPENCV IMAGE
 
         image_raw = cv2.imread(image_path)
+        print(image_raw.shape)
         cv2.imshow('image_raw',image_raw)
         start_time = time.time()
         
@@ -89,7 +89,9 @@ if __name__ == "__main__":
         #3 EDGE ANALYSIS 
         #   En attendant que guilhem vous sorte une image des contours
         #   vous devrez bosser sur une image paint  
-        is_defective,hole_type  = func_edge_analysis(image_edges,8)
+        is_defective,hole_type  = func_edge_analysis(image_filtered,8)
+        print("is_defective : {}".format(is_defective))
+        print("hole_type : {}".format(hole_type))
         print("--- TIME : %s seconds ---" % (time.time() - start_time))
 
         print("(press a key to process next image)")
