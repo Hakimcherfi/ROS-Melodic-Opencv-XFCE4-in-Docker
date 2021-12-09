@@ -73,7 +73,7 @@ class analyseContour:
         #caracterisation :
 
         #entre hough et les contours (la forme est-elle un cercle ?)
-        if (np.pi*(circle[:,2:])**2)*0.9<=aire<=np.pi*((circle[:,2:])**2)*1.1:
+        if (np.pi*(circle[:,2:])**2)*0.94<=aire<=np.pi*((circle[:,2:])**2)*1.06:
             pass
         else:
             isdefective=True

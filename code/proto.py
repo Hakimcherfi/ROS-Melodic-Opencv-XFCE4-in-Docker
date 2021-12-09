@@ -38,6 +38,8 @@ if __name__ == "__main__":
         if file.endswith(".jpg"):
             image_list.append(os.path.join(image_dir, file))
 
+    rayons = [53,53,65,54,37,180,21,8,35,53,21]
+    index = 0
     #for all the images we have
     for image_path in image_list:
         
@@ -53,7 +55,7 @@ if __name__ == "__main__":
         cv2.imshow('image_filtered',image_filtered)
 
         #2 CHECK
-        is_defective,hole_type  = func_edge_analysis(image_filtered,8)
+        is_defective,hole_type  = func_edge_analysis(image_filtered,rayons[index])
         print("is_defective : {}".format(is_defective))
         print("hole_type : {}".format(hole_type))
 
@@ -67,7 +69,7 @@ if __name__ == "__main__":
         cv2.imshow('RESULT IHM',image_raw)
 
         print("--- TIME : %s seconds ---" % (time.time() - start_time))
-
+        index+=1
         print("(press a key to process next image)")
         cv2.waitKey(0)
 
