@@ -21,11 +21,11 @@ def func_preprocess(image_raw):
 
 
 #int : image_edges               = image du coutour du trou [NOIR et BLANC]
-#      expected_hole_diameter    = diametre suppose du trou [FLOAT] (data optenue par autre pole que nous)
+#      expected_hole_radius    = rayon suppose du trou [FLOAT] (data optenue par autre pole que nous)
 #out : is_defective              = indique si le trou est bon ou pas [BOOL] 
 #      defect_type               = precise si possible de type de defaut [STR] 
-def func_edge_analysis(image_edges,expected_hole_diameter):
-    return analyseContour.caracterization(cv2.cvtColor(image_edges,cv2.COLOR_GRAY2RGB),expected_hole_diameter)
+def func_edge_analysis(image_edges,expected_hole_radius):
+    return analyseContour.caracterization(cv2.cvtColor(image_edges,cv2.COLOR_GRAY2RGB),expected_hole_radius)
 
 
 
