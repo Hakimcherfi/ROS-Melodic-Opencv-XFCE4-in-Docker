@@ -1,0 +1,332 @@
+Validating found git in: git
+Using git 2.17.1 from git
+> git rev-parse --git-dir
+Open repository: /root/Desktop/pge
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git check-ignore -v -z --stdin
+> git show --textconv :code/filtrage.py
+> git ls-files --stage -- /root/Desktop/pge/code/filtrage.py
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/analyseContour.py
+> git ls-files --stage -- /root/Desktop/pge/code/analyseContour.py
+> git cat-file -s d1ce868e12c9b8d6d087bf63a61a7ba88b9931f5
+> git show --textconv :code/proto.py
+> git ls-files --stage -- /root/Desktop/pge/code/proto.py
+> git cat-file -s a0e3bd2a8fd9c5c0c1682f2fef2cc056bffed355
+> git show --textconv :code/analyseContour.py
+> git ls-files --stage -- /root/Desktop/pge/code/analyseContour.py
+> git cat-file -s d1ce868e12c9b8d6d087bf63a61a7ba88b9931f5
+> git show --textconv :code/filtrage.py
+> git ls-files --stage -- /root/Desktop/pge/code/filtrage.py
+> git show --textconv :code/proto.py
+> git ls-files --stage -- /root/Desktop/pge/code/proto.py
+> git cat-file -s a0e3bd2a8fd9c5c0c1682f2fef2cc056bffed355
+> git show --textconv :code/filtrage.py
+> git ls-files --stage -- /root/Desktop/pge/code/filtrage.py
+> git show --textconv :code/analyseContour.py
+> git ls-files --stage -- /root/Desktop/pge/code/analyseContour.py
+> git cat-file -s d1ce868e12c9b8d6d087bf63a61a7ba88b9931f5
+> git show --textconv :code/filtrage.py
+> git ls-files --stage -- /root/Desktop/pge/code/filtrage.py
+> git show --textconv :code/analyseContour.py
+> git ls-files --stage -- /root/Desktop/pge/code/analyseContour.py
+> git cat-file -s d1ce868e12c9b8d6d087bf63a61a7ba88b9931f5
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/filtrage.py
+> git ls-files --stage -- /root/Desktop/pge/code/filtrage.py
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/proto.py
+> git ls-files --stage -- /root/Desktop/pge/code/proto.py
+> git cat-file -s a0e3bd2a8fd9c5c0c1682f2fef2cc056bffed355
+> git show --textconv :code/filtrage.py
+> git ls-files --stage -- /root/Desktop/pge/code/filtrage.py
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/proto.py
+> git ls-files --stage -- /root/Desktop/pge/code/proto.py
+> git cat-file -s a0e3bd2a8fd9c5c0c1682f2fef2cc056bffed355
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/filtrage.py
+> git ls-files --stage -- /root/Desktop/pge/code/filtrage.py
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/proto.py
+> git ls-files --stage -- /root/Desktop/pge/code/proto.py
+> git cat-file -s a0e3bd2a8fd9c5c0c1682f2fef2cc056bffed355
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/filtrage.py
+> git ls-files --stage -- /root/Desktop/pge/code/filtrage.py
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/proto.py
+> git ls-files --stage -- /root/Desktop/pge/code/proto.py
+> git cat-file -s a0e3bd2a8fd9c5c0c1682f2fef2cc056bffed355
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/filtrage.py
+> git ls-files --stage -- /root/Desktop/pge/code/filtrage.py
+> git show --textconv :code/proto.py
+> git ls-files --stage -- /root/Desktop/pge/code/proto.py
+> git cat-file -s a0e3bd2a8fd9c5c0c1682f2fef2cc056bffed355
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/filtrage.py
+> git ls-files --stage -- /root/Desktop/pge/code/filtrage.py
+> git show --textconv :code/proto.py
+> git ls-files --stage -- /root/Desktop/pge/code/proto.py
+> git cat-file -s a0e3bd2a8fd9c5c0c1682f2fef2cc056bffed355
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/analyseContour.py
+> git ls-files --stage -- /root/Desktop/pge/code/analyseContour.py
+> git cat-file -s d1ce868e12c9b8d6d087bf63a61a7ba88b9931f5
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git show --textconv :code/proto.py
+> git ls-files --stage -- /root/Desktop/pge/code/proto.py
+> git config --get commit.template
+> git cat-file -s a0e3bd2a8fd9c5c0c1682f2fef2cc056bffed355
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/filtrage.py
+> git ls-files --stage -- /root/Desktop/pge/code/filtrage.py
+> git show --textconv :code/proto.py
+> git ls-files --stage -- /root/Desktop/pge/code/proto.py
+> git cat-file -s a0e3bd2a8fd9c5c0c1682f2fef2cc056bffed355
+> git check-ignore -v -z --stdin
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/filtrage.py
+> git ls-files --stage -- /root/Desktop/pge/code/filtrage.py
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/proto.py
+> git ls-files --stage -- /root/Desktop/pge/code/proto.py
+> git cat-file -s a0e3bd2a8fd9c5c0c1682f2fef2cc056bffed355
+> git show --textconv :code/analyseContour.py
+> git ls-files --stage -- /root/Desktop/pge/code/analyseContour.py
+> git cat-file -s d1ce868e12c9b8d6d087bf63a61a7ba88b9931f5
+> git show --textconv :code/proto.py
+> git ls-files --stage -- /root/Desktop/pge/code/proto.py
+> git cat-file -s a0e3bd2a8fd9c5c0c1682f2fef2cc056bffed355
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git status -z -u
+> git symbolic-ref --short HEAD
+> git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track) refs/heads/main refs/remotes/main
+> git for-each-ref --sort -committerdate --format %(refname) %(objectname) %(*objectname)
+> git remote --verbose
+Warning: Failed to watch ref '/root/Desktop/pge/.git/refs/remotes/origin/main', is most likely packed.
+> git config --get commit.template
+> git show --textconv :code/analyseContour.py
+> git ls-files --stage -- /root/Desktop/pge/code/analyseContour.py
+> git cat-file -s d1ce868e12c9b8d6d087bf63a61a7ba88b9931f5

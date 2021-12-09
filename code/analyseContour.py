@@ -5,8 +5,6 @@ import cv2
 assert sys.version_info.major == 2
 assert sys.version_info.minor == 7
 assert sys.version_info.micro == 17
-assert cv2.__version__=="4.2.0"
-assert np.__version__=="1.13.3"
 
 class analyseContour:
 
