@@ -1,0 +1,2 @@
+ros_com
+-DCATKIN_DEVEL_PREFIX=/root/Desktop/pge/code/Ros_communication/devel -DCMAKE_INSTALL_PREFIX=/root/Desktop/pge/code/Ros_communication/install -G Unix Makefiles
