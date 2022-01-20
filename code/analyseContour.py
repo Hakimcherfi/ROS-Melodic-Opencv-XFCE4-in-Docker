@@ -6,33 +6,65 @@ assert sys.version_info.major == 2
 assert sys.version_info.minor == 7
 assert sys.version_info.micro == 17
 
-class analyseContour:
+class Contour:
 
-    @staticmethod
-    def __contour(image):
+    def __init__(self,im_bgr):
         """
-        in : image RGB contour 0/255
-        out : liste des points formant le contour, abscisse centre contour, ordonnee centre contour, aire du contour
+        Constructeur
+        Parametre : image BGR d'une unique forme, binarisee (noir = hors forme, blanc = forme)
         """
-        grey = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY) #conversion greyscale
-        ret,im_thresh = cv2.threshold(grey,127,255,cv2.THRESH_BINARY)
-        contours,hierarchy = cv2.findContours(im_thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
+        assert im_bgr is not None, "empty image"
+        assert (len(im_bgr.shape) == 3 and im_bgr.shape[2] == 3),"probleme dimensions, image BGR ?"
+        self.__im_bgr = im_bgr
+        self.__im_grey = cv2.cvtColor(self.__im_bgr,cv2.COLOR_BGR2GRAY)
+        ret,im_thresh = cv2.threshold(self.__im_grey,127,255,cv2.THRESH_BINARY)
+        self.__im_thresh = im_thresh
+        
+        #selon documentation : moments sur contours, ou sur image gris... faire un choix
+        #self.__moments = cv2.moments(self.getContour())
+        self.__moments = cv2.moments(self.__im_thresh,binaryImage=True)
+
+        contours,hierarchy = cv2.findContours(self.__im_thresh,cv2.RETR_TREE,cv2.CHAIN_APPROX_NONE)
         assert (len(contours)==1),"plusieurs contours detectes"
-        contours = contours[0]
-        moments = cv2.moments(contours)
-        x = moments['m10']/moments['m00']
-        y = moments['m01']/moments['m00']
-        aire = moments['m00']
-        x,y,aire = np.round(x).astype("int"),np.round(y).astype("int"),np.round(aire).astype("int")
-        return contours,x,y,aire
+        self.__contour = contours[0] 
+        
 
-    @staticmethod
-    def __cercle(image):
+    def getContour(self):
+        return self.__contour
+
+    def getImGrey(self):
+        return self.__im_grey
+
+    def getImThresh(self):
+        return self.__im_thresh
+
+    def getMoments(self):
+        return self.__moments
+
+    def getAire(self):
+        """aire de la surface definie par le contour, en pixels"""
+        return np.round(self.getMoments()['m00']).astype("int")
+
+    def getCentre(self):
+        """tuple (ligne, colonne) de la position du centre de la surface definie par le contour, en pixels"""
+        return (self.__getLigneCentre(),self.__getColonneCentre())
+
+    def getLigneCentre(self):
+        return np.round((self.getMoments()['m10'])/(self.getMoments()['m00'])).astype("int")
+
+    def getColonneCentre(self):
+        return np.round((self.getMoments()['m01'])/(self.getMoments()['m00'])).astype("int")
+
+class Cercle(Contour):
+
+    def __init__(self,im_bgr):
+        Contour.__init__(self,im_bgr)
+        self.__x_circle,self.__y_circle,self.__r_circle = self.findCircle()
+
+    def findCircle(self):
         """
-        in : image rgb binaire
-        out : [x,y,rayon] cercle obtenu par hough
+        out : [x,y,rayon] cercle obtenu par transformation de hough
         """
-        grey = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY) #conversion greyscale
         method = cv2.HOUGH_GRADIENT
         dp = 1 #0.5 : step 2 fois plus grand que resolution image. 2 : step 2 fois plus petit que resolution image
         minDist = 100000 #distance minimale entre cercles detectes (detecter cercle unique si assez grand, voir aucun si trop grand) mais le premier est conserve...
@@ -40,9 +72,45 @@ class analyseContour:
         param2 = 1# seuil inferieur utilise pour mecanisme de vote (si bas, des faux cercles sont detectes)
         minRadius = 0#seuil inf des cercles recherches
         maxRadius = 0#seuil sup des cercles recherches (si <=0 utilise +gde dimension de l'image, si <0, retourne centres sans donner de rayons)
-        circles = cv2.HoughCircles(grey,method,dp,minDist,param2 = param2) #liste de tuples contenant coordonnees cercles et votes
+        circles = cv2.HoughCircles(self.getImGrey(),method,dp,minDist,param2 = param2) #liste de tuples contenant coordonnees cercles et votes
         assert circles is not None,"Pas de cercle trouve"
-        return circles[:1,:1,:].reshape(1,3)
+        assert len(circles.shape) == 3 and circles.shape[0] == 1 and circles.shape[1] == 1 and circles.shape[2] == 3,"Plusieurs cercles trouves"
+        x_circle = int(np.round(circles[:1,:1,0:1]))
+        y_circle = int(np.round(circles[:1,:1,1:2]))
+        r_circle = int(np.round(circles[:1,:1,2:3]))
+        return x_circle,y_circle,r_circle
+        
+    def getXCircle(self):
+        return self.__x_circle
+
+    def getYCircle(self):
+        return self.__y_circle
+
+    def getRCircle(self):
+        return self.__r_circle
+
+    def getCircle(self):
+        return [self.__x_circle,self.__y_circle,self.__r_circle]
+
+class analyseContour:
+
+    @staticmethod
+    def __contour(im_bgr):
+        """
+        in : image RGB de la forme 0/255
+        out : liste des points formant le contour, abscisse centre contour, ordonnee centre contour, aire du contour
+        """
+        contour = Contour(im_bgr)
+        return contour.getContour(),contour.getLigneCentre(),contour.getColonneCentre(),contour.getAire()
+
+    @staticmethod
+    def __cercle(im_bgr):
+        """
+        in : image rgb binaire
+        out : [x,y,rayon] cercle obtenu par hough
+        """
+        cercle = Cercle(im_bgr)
+        return cercle.getCircle()
     
     @staticmethod
     def caracterization(image,rayon,affichage=False):
@@ -56,53 +124,42 @@ class analyseContour:
         - isdefective : booleen (vrai si defaut present)
         - defect : string contenant une forme/defaut reconnue
         """
-        assert image is not None, "empty image"
-        assert len(image.shape)==3,"image not RGB"
-        assert image.shape[2] == 3, "format not RGB"
         isdefective = False
         defect = ""
         circle = analyseContour.__cercle(image)
-        if circle is None:
-            print("no circle found.")
-            return True,"no circle found."
         contours,xbar,ybar,aire = analyseContour.__contour(image)
-        if contours is None:
-            print("issue with contours detection.")
-            return True,"issue with contours detection."
-        
         #caracterisation :
 
         #entre hough et les contours (la forme est-elle un cercle ?)
-        if (np.pi*(circle[:,2:])**2)*0.94<=aire<=np.pi*((circle[:,2:])**2)*1.06:
+        if (np.pi*(circle[2])**2)*0.94<=aire<=np.pi*((circle[2])**2)*1.06:
             pass
         else:
             isdefective=True
-            defect = "area mismatch cercle/contours ({}/{})\n".format(float(np.pi*((circle[:,2:])**2)),aire)
+            defect = "area mismatch cercle/contour ({}/{})\n".format(float(np.pi*((circle[2])**2)),aire)
         
         #entre hough et le parametre de la fonction (le rayon en parametre est-il correct ?)
-        if (circle[:,2:]*0.9<=rayon<=circle[:,2:]*1.1):
+        if (circle[2]*0.9<=rayon<=circle[2]*1.1):
             pass
         else:
             isdefective=True
-            defect += "radius mismatch function parameter/cercle ({}/{})\n".format(rayon,float(circle[:,2:]))
+            defect += "radius mismatch function parameter/cercle ({}/{})\n".format(rayon,float(circle[2]))
         
         if affichage:
             cv2.imshow('original image',image)
             cv2.waitKey(0)
             output = image.copy()
-            circle = np.round(circle[:, :]).astype("int") #pixels : valeurs entieres
-            cv2.circle(output,(circle[:,:1],circle[:,1:2]),circle[:,2:],(0,0,255),1) #dessine cercle
+            cv2.circle(output,(circle[0],circle[1]),circle[2],(0,0,255),1) #dessine cercle
             cv2.imshow('transfo hough',output)
             cv2.waitKey(0)
             output = np.zeros(image.shape)
-            output = cv2.drawContours(image=output,contours=contours,contourIdx=-1,color=(0,0,255))
+            output = cv2.drawContours(image=output,contours=Contour(image).getContour(),contourIdx=-1,color=(0,0,255))
             cv2.imshow('contours',output)
             cv2.waitKey(0)
             cv2.destroyAllWindows()
         return isdefective, defect
 
 if __name__ == "__main__":
-    image = cv2.imread('ovale.jpg')
-    defect,resultat = analyseContour.caracterization(image,100,True)
+    image = cv2.imread('analyse_contour/81radius.jpg')
+    defect,resultat = analyseContour.caracterization(image,81,True)
     print(defect)
     print(resultat)

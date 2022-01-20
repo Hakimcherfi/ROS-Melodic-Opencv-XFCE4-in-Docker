@@ -27,8 +27,6 @@ def func_preprocess(image_raw):
 def func_edge_analysis(image_edges,expected_hole_radius):
     return analyseContour.caracterization(cv2.cvtColor(image_edges,cv2.COLOR_GRAY2RGB),expected_hole_radius)
 
-
-
 if __name__ == "__main__":
     curent_dir = os.getcwd()
     image_dir = curent_dir+"/images"
@@ -46,7 +44,6 @@ if __name__ == "__main__":
         #0 LOADING OPENCV IMAGE
 
         image_raw = cv2.imread(image_path)
-        print(image_raw.shape)
         cv2.imshow('image_raw',image_raw)
         start_time = time.time()
         
@@ -72,6 +69,3 @@ if __name__ == "__main__":
         index+=1
         print("(press a key to process next image)")
         cv2.waitKey(0)
-
-
-
