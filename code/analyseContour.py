@@ -101,6 +101,14 @@ class analyseContour:
         out : liste des points formant le contour, abscisse centre contour, ordonnee centre contour, aire du contour
         """
         contour = Contour(im_bgr)
+        print("m00 : {}".format(contour.getMoments()['m00']))
+        print("mu20 : {}".format(contour.getMoments()['mu20']))
+        print("mu02 : {}".format(contour.getMoments()['mu02']))
+        print("mu11 : {}".format(contour.getMoments()['mu11']))
+        print("nu20 : {}".format(contour.getMoments()['nu20']))
+        print("nu02 : {}".format(contour.getMoments()['nu02']))
+        print("nu11 : {}".format(contour.getMoments()['nu11']))
+        #print("moments : {}".format(contour.getMoments()))
         return contour.getContour(),contour.getLigneCentre(),contour.getColonneCentre(),contour.getAire()
 
     @staticmethod
@@ -130,12 +138,13 @@ class analyseContour:
         contours,xbar,ybar,aire = analyseContour.__contour(image)
         #caracterisation :
 
-        #entre hough et les contours (la forme est-elle un cercle ?)
-        if (np.pi*(circle[2])**2)*0.94<=aire<=np.pi*((circle[2])**2)*1.06:
-            pass
-        else:
+        #entre hough et les contours (la forme est-elle obstruee ou fissuree ?)
+        if (aire < 0.94*np.pi*((circle[2])**2)):
+            isdefective = True
+            defect += "obstruction (area of circle > area of real hole) ({}>{})".format(float(np.pi*((circle[2])**2)),aire)
+        if (aire > 1.06*np.pi*((circle[2])**2)):
             isdefective=True
-            defect = "area mismatch cercle/contour ({}/{})\n".format(float(np.pi*((circle[2])**2)),aire)
+            defect += "tear (area of real hole > area of circle) ({}>{})\n".format(aire,float(np.pi*((circle[2])**2)))
         
         #entre hough et le parametre de la fonction (le rayon en parametre est-il correct ?)
         if (circle[2]*0.9<=rayon<=circle[2]*1.1):
@@ -144,6 +153,7 @@ class analyseContour:
             isdefective=True
             defect += "radius mismatch function parameter/cercle ({}/{})\n".format(rayon,float(circle[2]))
         
+
         if affichage:
             cv2.imshow('original image',image)
             cv2.waitKey(0)
