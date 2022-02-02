@@ -18,6 +18,6 @@ class filtrage:
         for cnt in contour:
             cv2.drawContours(des,[cnt],0,255,-1)
 
-        image_filtered = cv2.bitwise_not(des)
+        #image_filtered = cv2.bitwise_not(des)
         return cv2.bitwise_not(image_filtered) 
 
