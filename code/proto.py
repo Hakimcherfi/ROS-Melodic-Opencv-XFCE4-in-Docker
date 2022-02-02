@@ -29,11 +29,11 @@ def func_edge_analysis(image_edges,expected_hole_radius):
 
 if __name__ == "__main__":
     curent_dir = os.getcwd()
-    image_dir = curent_dir+"/images"
+    image_dir = curent_dir+"/images_robot"
     print(image_dir)
     image_list = []
     for file in os.listdir(image_dir):
-        if file.endswith(".jpg"):
+        if file.endswith(".bmp"):
             image_list.append(os.path.join(image_dir, file))
 
     rayons = [53,53,65,54,37,180,21,8,35,53,21]
