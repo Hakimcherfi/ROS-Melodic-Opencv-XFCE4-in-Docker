@@ -39,7 +39,7 @@ if __name__ == "__main__":
         if file.endswith(".bmp"):
             image_list.append(os.path.join(image_dir, file))
 
-    rayons = [207,242,580,415,392,415,596,145,150]
+    rayons = [246,242,580,415,392,415,417,596,145,150]
     index = 0
     #for all the images we have
     for image_path in image_list:
@@ -72,6 +72,7 @@ if __name__ == "__main__":
         an_time = (time.time() - start_time) - preprocess_time
         print("--- ANALYSE TIME : %s seconds ---" % an_time)
 
+        cv2.putText(image_raw, hole_type, (50,130), cv2.FONT_HERSHEY_SIMPLEX, 5, (0, 0, 255), 5, cv2.LINE_AA)
         #display infos
         if(is_defective):
             cv2.drawContours(image_raw, contours, -1, (0,0,255), 15)

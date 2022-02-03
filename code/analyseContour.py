@@ -147,45 +147,45 @@ class analyseContour:
         #entre hough et les contours (la forme est-elle obstruee ou fissuree ?)
         if (aire < 0.94*np.pi*((circle[2])**2)):
             isdefective = True
-            defect += "obstruction (area of circle > area of real hole) ({}>{})\n".format(float(np.pi*((circle[2])**2)),aire)
+            defect += "obstruction"# (area of circle > area of real hole) ({}>{})\n".format(float(np.pi*((circle[2])**2)),aire)
         if (aire > 1.06*np.pi*((circle[2])**2)):
             isdefective=True
-            defect += "tear (area of real hole > area of circle) ({}>{})\n".format(aire,float(np.pi*((circle[2])**2)))
+            defect += "tear "# (area of real hole > area of circle) ({}>{})\n".format(aire,float(np.pi*((circle[2])**2)))
         
         if(moments['nu20']< 0.96*1/(4*np.pi) or moments['nu20']>1.04*1/(4*np.pi)):
             isdefective = True
-            defect += "issue with nu20 moment\n"
+            #defect += "issue with nu20 moment\n"
 
         if(moments['nu02']< 0.96*1/(4*np.pi) or moments['nu02']>1.04*1/(4*np.pi)):
             isdefective = True
-            defect += "issue with nu02 moment\n"   
+            #defect += "issue with nu02 moment\n"   
 
         if(abs(moments['nu11'])>10**-2):
             isdefective=True
-            defect += "issue with nu11 moment\n"
+            #defect += "issue with nu11 moment\n"
 
         if(abs(moments['nu21'])>10**-3):
             isdefective=True
-            defect += "issue with nu21 moment\n"
+            #defect += "issue with nu21 moment\n"
 
         if(abs(moments['nu12'])>10**-3):
             isdefective=True
-            defect += "issue with nu12 moment\n"
+            #defect += "issue with nu12 moment\n"
 
         if(abs(moments['nu30'])>10**-3):
             isdefective=True
-            defect += "issue with nu30 moment\n"
+            #defect += "issue with nu30 moment\n"
 
         if(abs(moments['nu03'])>10**-3):
             isdefective=True
-            defect += "issue with nu03 moment\n"
+            #defect += "issue with nu03 moment\n"
 
         #entre hough et le parametre de la fonction (le rayon en parametre est-il correct ?)
         if (circle[2]*0.9<=rayon<=circle[2]*1.1):
             pass
         else:
             isdefective=True
-            defect += "radius mismatch function parameter/cercle ({}/{})\n".format(rayon,float(circle[2]))
+            defect += "radius mismatch {}/{}".format(rayon,float(circle[2]))  # function parameter/cercle ({}/{})\n".format(rayon,float(circle[2]))
         
 
         if affichage:
