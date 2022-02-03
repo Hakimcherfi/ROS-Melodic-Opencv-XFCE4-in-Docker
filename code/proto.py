@@ -28,6 +28,9 @@ def func_edge_analysis(image_edges,expected_hole_radius):
     return analyseContour.caracterization(cv2.cvtColor(image_edges,cv2.COLOR_GRAY2RGB),expected_hole_radius)
 
 if __name__ == "__main__":
+
+    show_steps = False
+
     curent_dir = os.getcwd()
     image_dir = curent_dir+"/images_robot"
     print(image_dir)
@@ -36,7 +39,7 @@ if __name__ == "__main__":
         if file.endswith(".bmp"):
             image_list.append(os.path.join(image_dir, file))
 
-    rayons = [53,53,65,54,37,180,21,8,35,53,21]
+    rayons = [207,242,580,415,392,415,596,145,150]
     index = 0
     #for all the images we have
     for image_path in image_list:
@@ -44,28 +47,41 @@ if __name__ == "__main__":
         #0 LOADING OPENCV IMAGE
 
         image_raw = cv2.imread(image_path)
-        cv2.imshow('image_raw',image_raw)
+        #image_raw_resized = cv2.resize(image_raw,(520,388))
+        if(show_steps):
+            cv2.imshow('image_raw',image_raw)
         start_time = time.time()
         
+        load_time = (time.time() - start_time)
+        print("--- LOADING TIME : %s seconds ---" % (time.time() - start_time))
+
+
         #1 PREPROCESSING
         image_filtered=func_preprocess(image_raw)
-        cv2.imshow('image_filtered',image_filtered)
+        if(show_steps):
+            cv2.imshow('image_filtered',image_filtered)
+
+        preprocess_time = (time.time() - start_time) - load_time
+        print("--- PREPROCESS TIME : %s seconds ---" % preprocess_time)
 
         #2 CHECK
-        is_defective,hole_type  = func_edge_analysis(image_filtered,rayons[index])
+        is_defective,hole_type,contours  = func_edge_analysis(image_filtered,rayons[index])
         print("is_defective : {}".format(is_defective))
         print("hole_type : {}".format(hole_type))
 
+        an_time = (time.time() - start_time) - preprocess_time
+        print("--- ANALYSE TIME : %s seconds ---" % an_time)
+
         #display infos
-        contours, hierarchy = cv2.findContours(image_filtered, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         if(is_defective):
-            cv2.drawContours(image_raw, contours, -1, (0,0,255), 3)
+            cv2.drawContours(image_raw, contours, -1, (0,0,255), 15)
         else:
-            cv2.drawContours(image_raw, contours, -1, (0,255,0), 3)
+            cv2.drawContours(image_raw, contours, -1, (0,255,0), 15)
 
-        cv2.imshow('RESULT IHM',image_raw)
+    
+        cv2.imshow('RESULT IHM',cv2.resize(image_raw,(520,388)))
 
-        print("--- TIME : %s seconds ---" % (time.time() - start_time))
+        print("--- FINISH TIME : %s seconds ---" % (time.time() - start_time))
         index+=1
         print("(press a key to process next image)")
         cv2.waitKey(0)

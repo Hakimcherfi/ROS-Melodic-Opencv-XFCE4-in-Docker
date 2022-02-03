@@ -136,6 +136,7 @@ class analyseContour:
         out :
         - isdefective : booleen (vrai si defaut present)
         - defect : string contenant une forme/defaut reconnue
+        - contours : ensemble des pixels formant le contour
         """
         isdefective = False
         defect = ""
@@ -199,7 +200,7 @@ class analyseContour:
             cv2.imshow('contours',output)
             cv2.waitKey(0)
             cv2.destroyAllWindows()
-        return isdefective, defect
+        return isdefective, defect, contours
 
 if __name__ == "__main__":
     image = cv2.imread('analyse_contour/81radius.jpg')
