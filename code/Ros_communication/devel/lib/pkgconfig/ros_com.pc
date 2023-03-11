@@ -1,8 +1,0 @@
-prefix=/root/Desktop/pge/code/Ros_communication/devel
-
-Name: ros_com
-Description: Description of ros_com
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
